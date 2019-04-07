@@ -22,6 +22,9 @@ resources:
   properties:
     zone: {{ properties['zone'] }}
     machineType: {{ COMPUTE_URL_BASE }}projects/{{ env['project'] }}/zones/{{ properties['zone'] }}/machineTypes/n1-standard-1
+    tags:
+      items:
+        - webserver
     metadata:
       items:
       {% for key, value in properties['metadata-from-file'].iteritems() %}
@@ -42,3 +45,4 @@ resources:
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
+

@@ -14,16 +14,39 @@
 
 imports:
 - path: instance.jinja
-- path: ../startup-script.sh
+- path: firewall.jinja
+- path: ./startup-script.sh
   name: startup-script.sh
-- path: ../my-server-id
-  name: my-server-id
+- path: ./webserver-1
+  name: webserver-id1
+- path: ./webserver-2
+  name: webserver-id2
+- path: ./webserver-3
+  name: webserver-id3
 
 resources:
+- name: webserver1
+  type: instance.jinja
+  properties:
+    metadata-from-file:
+      startup-script: startup-script.sh
+      my-server-id: webserver-id1
+    zone: us-central1-a
 - name: webserver2
   type: instance.jinja
   properties:
     metadata-from-file:
       startup-script: startup-script.sh
-      my-server-id: my-server-id
+      my-server-id: webserver-id2
+    zone: us-central1-a
+- name: webserver3
+  type: instance.jinja
+  properties:
+    metadata-from-file:
+      startup-script: startup-script.sh
+      my-server-id: webserver-id3
+    zone: us-central1-a
+- name: allow-web
+  type: firewall.jinja
+  properties:
     zone: us-central1-a

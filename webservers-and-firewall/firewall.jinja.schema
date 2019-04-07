@@ -13,19 +13,7 @@
 # limitations under the License.
 
 info:
-  title: VM with metadata from file
-  author: Google Inc.
-  description: Creates a single vm with the naming scheme <deployment>-<name>, populating metadata from imported files.
+  title: Firewall rule allowing HTTP 80 traffic
+  author: Victor Mehmeri
+  description: Creates a single Firewall rule in the default network allowing http 80 traffic to VMs tagged with webserver tag.
 
-required:
-- zone
-- metadata-from-file
-
-properties:
-  zone:
-    type: string
-    description: GCP zone
-
-  metadata-from-file:
-    type: object
-    description: Key is metadata key, value is import file containing metadata value.

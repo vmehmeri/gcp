@@ -1,0 +1,13 @@
+
+{% set BASE_NAME = env['name'] %}
+
+resources:
+- name: {{ BASE_NAME }}
+  type: compute.v1.firewall
+  properties:
+    network: {{ COMPUTE_URL_BASE }}projects/{{ env['project'] }}/global/networks/default
+    sourceRanges: ["0.0.0.0/0"]
+    targetTags: ["webserver"]
+    allowed:
+    - IPProtocol: TCP
+      ports: ["80"]
